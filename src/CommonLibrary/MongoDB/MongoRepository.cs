@@ -1,7 +1,7 @@
-﻿using System.Linq.Expressions;
-using CommonLibrary.Entities;
+﻿using CommonLibrary.Entities;
 using CommonLibrary.Interfaces;
 using MongoDB.Driver;
+using System.Linq.Expressions;
 
 namespace Catalog.Repositories;
 
