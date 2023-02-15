@@ -1,4 +1,5 @@
-﻿using CommonLibrary.Entities;
+﻿using System.Linq.Expressions;
+using CommonLibrary.Entities;
 using CommonLibrary.Interfaces;
 using MongoDB.Driver;
 
@@ -19,9 +20,19 @@ public class MongoRepository<T> : IRepository<T> where T : IEntity
         return await _mongoDbCollection.Find(_filterBuilder.Empty).ToListAsync();
     }
 
+    public async Task<IReadOnlyCollection<T>> GetAllAsync(Expression<Func<T, bool>> filter)
+    {
+        return await _mongoDbCollection.Find(filter).ToListAsync();
+    }
+
     public async Task<T> GetAsync(Guid id)
     {
         FilterDefinition<T> filter = _filterBuilder.Eq(entity => entity.Id, id);
+        return await _mongoDbCollection.Find(filter).FirstOrDefaultAsync();
+    }
+
+    public async Task<T> GetAsync(Expression<Func<T, bool>> filter)
+    {
         return await _mongoDbCollection.Find(filter).FirstOrDefaultAsync();
     }
 
