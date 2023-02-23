@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU</Platforms>
     <PackageId>CommonLibrary</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Viswanatha Swamy P K</Authors>
     <Company>Home</Company>
     <Product>Small Microservices Application</Product>
