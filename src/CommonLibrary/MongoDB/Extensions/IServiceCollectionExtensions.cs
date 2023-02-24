@@ -26,13 +26,12 @@ public static class IServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddMongoRepository<T>(this IServiceCollection services)
+    public static IServiceCollection AddMongoRepository<T>(this IServiceCollection services, string collectionName)
         where T : IEntity
     {
         _ = services.AddSingleton<IRepository<T>>(serviceProvider =>
         {
-            return new MongoRepository<T>(serviceProvider.GetService<IMongoDatabase>()!,
-                                            serviceProvider.GetService<MongoDbCollectionSettings>()?.Name!);
+            return new MongoRepository<T>(serviceProvider.GetService<IMongoDatabase>()!, collectionName);
         });
 
         return services;
