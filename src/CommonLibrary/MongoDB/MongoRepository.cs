@@ -3,7 +3,7 @@ using CommonLibrary.Interfaces;
 using MongoDB.Driver;
 using System.Linq.Expressions;
 
-namespace Catalog.Repositories;
+namespace CommonLibrary.MongoDB;
 
 public class MongoRepository<T> : IRepository<T> where T : IEntity
 {

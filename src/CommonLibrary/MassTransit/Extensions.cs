@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Play.Common.MassTransit;
+namespace CommonLibrary.MassTransit;
 
 public static class Extensions
 {
