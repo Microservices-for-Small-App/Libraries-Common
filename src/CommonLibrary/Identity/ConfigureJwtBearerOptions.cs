@@ -8,19 +8,18 @@ namespace CommonLibrary.Identity;
 
 public class ConfigureJwtBearerOptions : IConfigureNamedOptions<JwtBearerOptions>
 {
-    private readonly IConfiguration configuration;
+    private readonly IConfiguration _configuration;
 
     public ConfigureJwtBearerOptions(IConfiguration configuration)
     {
-        this.configuration = configuration;
+        _configuration = configuration;
     }
 
     public void Configure(string? name, JwtBearerOptions options)
     {
         if (name == JwtBearerDefaults.AuthenticationScheme)
         {
-            var serviceSettings = configuration.GetSection(nameof(ServiceSettings))
-                                               .Get<ServiceSettings>();
+            var serviceSettings = _configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
 
             options.Authority = serviceSettings!.Authority;
             options.Audience = serviceSettings.ServiceName;
