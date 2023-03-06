@@ -1,5 +1,4 @@
-﻿using Catalog.Repositories;
-using CommonLibrary.Entities;
+﻿using CommonLibrary.Entities;
 using CommonLibrary.Interfaces;
 using CommonLibrary.Settings;
 using Microsoft.Extensions.DependencyInjection;
