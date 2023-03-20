@@ -26,7 +26,7 @@ public static class Extensions
         return services;
     }
 
-    private static void UseRabbitMqService(this IServiceCollectionBusConfigurator configure, Action<IRetryConfigurator> configureRetries = null)
+    public static void UseRabbitMqService(this IServiceCollectionBusConfigurator configure, Action<IRetryConfigurator> configureRetries = null)
     {
         configure.UsingRabbitMq((context, configurator) =>
         {
