@@ -12,7 +12,7 @@ namespace CommonLibrary.MassTransit;
 
 public static class Extensions
 {
-    public static IServiceCollection AddMassTransitWithRabbitMq(this IServiceCollection services, Action<IRetryConfigurator> configureRetries = null)
+    public static IServiceCollection AddMassTransitWithRabbitMq(this IServiceCollection services, Action<IRetryConfigurator>? configureRetries = default)
     {
         services.AddMassTransit(configure =>
         {
@@ -26,7 +26,7 @@ public static class Extensions
         return services;
     }
 
-    public static void UseRabbitMqService(this IServiceCollectionBusConfigurator configure, Action<IRetryConfigurator> configureRetries = null)
+    public static void UseRabbitMqService(this IServiceCollectionBusConfigurator configure, Action<IRetryConfigurator>? configureRetries = default)
     {
         configure.UsingRabbitMq((context, configurator) =>
         {
@@ -34,8 +34,8 @@ public static class Extensions
             var serviceSettings = configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
             var rabbitMQSettings = configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
 
-            configurator.Host(rabbitMQSettings.Host);
-            configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings.ServiceName, false));
+            configurator.Host(rabbitMQSettings!.Host);
+            configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings!.ServiceName, false));
 
             if (configureRetries is null)
             {
