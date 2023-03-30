@@ -2,7 +2,7 @@
 
 public class MongoDbSettings
 {
-    public string Host { get; init; } = string.Empty;
+    public string? Host { get; init; }
 
     public int Port { get; init; }
 
