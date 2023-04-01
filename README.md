@@ -31,7 +31,7 @@ dotnet nuget list source
 ## Create and publish package to GitHub using PowerShell
 
 ```powershell
-$version="1.0.16"
+$version="1.0.17"
 $owner="Microservices-for-Small-App"
 $username="vishipayyallore"
 $repo="Libraries-Common"
