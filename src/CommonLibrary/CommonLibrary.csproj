@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU</Platforms>
     <PackageId>CommonLibrary</PackageId>
-    <Version>1.0.12</Version>
+    <Version>1.0.13</Version>
     <Authors>Viswanatha Swamy P K</Authors>
     <Company>Home</Company>
     <Product>Small Microservices Application</Product>
@@ -14,7 +14,7 @@
     <Copyright>© 2023 Swamy Home</Copyright>
     <PackageTags>common-library</PackageTags>
     <PackageReleaseNotes>Initial version 1.0</PackageReleaseNotes>
-    <AssemblyVersion>1.12</AssemblyVersion>
+    <AssemblyVersion>1.13</AssemblyVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
