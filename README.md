@@ -17,7 +17,7 @@ dotnet nuget add source C:\LordKrishna\Packages -n Local-Packages
 ## Create and publish package to GitHub using PowerShell
 
 ```powershell
-$version="1.0.13"
+$version="1.0.14"
 $owner="Microservices-for-Small-App"
 $username="vishipayyallore"
 $repo="Libraries-Common"
@@ -25,7 +25,7 @@ $gh_pat="[PAT HERE]"
 
 dotnet clean
 dotnet build -c Release
-dotnet pack --configuration Release -p:PackageVersion=$version -p:RepositoryUrl=https://github.com/$owner/$repo -o ..\..\packages
+dotnet pack --configuration Release -p:PackageVersion=$version -p:RepositoryUrl=https://github.com/$owner/$repo -o C:\\LordKrishna\\SSP\\Packages
 
-dotnet nuget push ..\..\packages\CommonLibrary.$version.nupkg --api-key $gh_pat --source "github"
+dotnet nuget push C:\LordKrishna\SSP\Packages\CommonLibrary.$version.nupkg --api-key $gh_pat --source "gHmicroservices"
 ```
