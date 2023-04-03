@@ -14,6 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "documentation", "documentation", "{CF4787DB-DF7D-4E80-9783-69EEB628EE59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "images", "images", "{2D8F993F-1851-4142-8A05-8F97CDA25F7A}"
+	ProjectSection(SolutionItems) = preProject
+		documentation\images\GitHub_Nuget_Packages.PNG = documentation\images\GitHub_Nuget_Packages.PNG
+		documentation\images\Packages_Permissions.PNG = documentation\images\Packages_Permissions.PNG
+		documentation\images\PAT_Settings.PNG = documentation\images\PAT_Settings.PNG
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +39,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3362AF3A-75C2-4F4D-82F9-635D369FC606} = {2E44FA80-4E5F-4653-AEAD-DA33BD7806C7}
+		{2D8F993F-1851-4142-8A05-8F97CDA25F7A} = {CF4787DB-DF7D-4E80-9783-69EEB628EE59}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8F28424-DD72-469A-8F02-B416CA774C43}
