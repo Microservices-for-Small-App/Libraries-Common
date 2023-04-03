@@ -39,7 +39,7 @@ $gh_pat="ghp_Your_GitHib_Classic_PAT"
 
 dotnet clean
 dotnet build -c Release
-dotnet pack --configuration Release -p:PackageVersion=$version -o C:\LordKrishna\SSP\Packages -p:RepositoryUrl=https://github.com/$owner/$repo
+dotnet pack --configuration Release -o C:\LordKrishna\SSP\Packages -p:PackageVersion=$version -p:RepositoryUrl=https://github.com/$owner/$repo
 
 dotnet nuget push C:\LordKrishna\SSP\Packages\CommonLibrary.$version.nupkg --source "gHmicroservices" --api-key $gh_pat
 ```
@@ -60,6 +60,6 @@ dotnet nuget push C:\LordKrishna\SSP\Packages\CommonLibrary.$version.nupkg --sou
 
 ![PAT Settings |150x150](./documentation/images/PAT_Settings.PNG)
 
-![Packages Permissions |150x150](./Documentation/Images/Packages_Permissions.PNG)
+![Packages Permissions |150x150](./documentation/images/Packages_Permissions.PNG)
 
-![GitHub Nuget Packages |150x150](./Documentation/Images/GitHub_Nuget_Packages.PNG)
+![GitHub Nuget Packages |150x150](./documentation/images/GitHub_Nuget_Packages.PNG)
