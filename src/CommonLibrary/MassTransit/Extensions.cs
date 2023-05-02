@@ -34,21 +34,6 @@ public static class Extensions
         return services;
     }
 
-    public static IServiceCollection AddMassTransitWithRabbitMq(this IServiceCollection services,
-        Action<IRetryConfigurator>? configureRetries = default)
-    {
-        services.AddMassTransit(configure =>
-        {
-            configure.AddConsumers(Assembly.GetEntryAssembly());
-
-            configure.UseRabbitMqService(configureRetries);
-        });
-
-        services.AddMassTransitHostedService();
-
-        return services;
-    }
-
     public static IServiceCollection AddMassTransitWithServiceBus(this IServiceCollection services,
             Action<IRetryConfigurator>? configureRetries = default)
     {
@@ -57,6 +42,21 @@ public static class Extensions
             configure.AddConsumers(Assembly.GetEntryAssembly());
 
             configure.UseAzureServiceBus(configureRetries);
+        });
+
+        services.AddMassTransitHostedService();
+
+        return services;
+    }
+
+    public static IServiceCollection AddMassTransitWithRabbitMq(this IServiceCollection services,
+        Action<IRetryConfigurator>? configureRetries = default)
+    {
+        services.AddMassTransit(configure =>
+        {
+            configure.AddConsumers(Assembly.GetEntryAssembly());
+
+            configure.UseRabbitMqService(configureRetries);
         });
 
         services.AddMassTransitHostedService();
@@ -81,24 +81,6 @@ public static class Extensions
         }
     }
 
-    public static void UseRabbitMqService(this IServiceCollectionBusConfigurator configure,
-        Action<IRetryConfigurator>? configureRetries = default)
-    {
-        configure.UsingRabbitMq((context, configurator) =>
-        {
-            var configuration = context.GetService<IConfiguration>();
-            var serviceSettings = configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
-            var rabbitMQSettings = configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
-
-            configurator.Host(rabbitMQSettings!.Host);
-            configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings!.ServiceName, false));
-
-            configureRetries ??= (retryConfigurator) => retryConfigurator.Interval(3, TimeSpan.FromSeconds(5));
-
-            configurator.UseMessageRetry(configureRetries);
-        });
-    }
-
     public static void UseAzureServiceBus(this IServiceCollectionBusConfigurator configure,
             Action<IRetryConfigurator>? configureRetries = default)
     {
@@ -109,6 +91,24 @@ public static class Extensions
             var serviceBusSettings = configuration.GetSection(nameof(ServiceBusSettings)).Get<ServiceBusSettings>();
 
             configurator.Host(serviceBusSettings!.ConnectionString);
+            configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings!.ServiceName, false));
+
+            configureRetries ??= (retryConfigurator) => retryConfigurator.Interval(3, TimeSpan.FromSeconds(5));
+
+            configurator.UseMessageRetry(configureRetries);
+        });
+    }
+
+    public static void UseRabbitMqService(this IServiceCollectionBusConfigurator configure,
+        Action<IRetryConfigurator>? configureRetries = default)
+    {
+        configure.UsingRabbitMq((context, configurator) =>
+        {
+            var configuration = context.GetService<IConfiguration>();
+            var serviceSettings = configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
+            var rabbitMQSettings = configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
+
+            configurator.Host(rabbitMQSettings!.Host);
             configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings!.ServiceName, false));
 
             configureRetries ??= (retryConfigurator) => retryConfigurator.Interval(3, TimeSpan.FromSeconds(5));
