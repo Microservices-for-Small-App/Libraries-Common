@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU</Platforms>
     <PackageId>CommonLibrary</PackageId>
-    <Version>1.0.29</Version>
+    <Version>1.0.30</Version>
     <Authors>Viswanatha Swamy P K</Authors>
     <Company>Home</Company>
     <Product>Small Microservices Application</Product>
@@ -14,12 +14,14 @@
     <Copyright>© 2023 Swamy Home</Copyright>
     <PackageTags>common-library</PackageTags>
     <PackageReleaseNotes>Initial version 1.0</PackageReleaseNotes>
-    <AssemblyVersion>1.0.29</AssemblyVersion>
+    <AssemblyVersion>1.0.30</AssemblyVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/Microservices-for-Small-App/Libraries-Common</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
+    <PackageReference Include="Azure.Identity" Version="1.9.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
